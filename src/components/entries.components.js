@@ -11,7 +11,7 @@ const Entries = () => {
     const [changeIngredient, setChangeIngredient] = useState({"change": false, "id": 0}) 
     const [newIngredientName, setNewIngredientName] = useState("") 
     const [addNewEntry, setAddNewEntry] = useState(false) 
-    // eslint-disable-next-line 
+
     const [newEntry, setNewEntry] = useState({"dish": "", "ingredients": "", "calories": 0, "fat": 0}) 
 
 
