@@ -12,7 +12,7 @@ const Entries = () => {
     const [newIngredientName, setNewIngredientName] = useState("") 
     const [addNewEntry, setAddNewEntry] = useState(false) 
 
-    const [newEntry, setNewEntry] = useState({"dish": "", "ingredients": "", "calories": 0, "fat": 0}) 
+    const [newEntry, setNewEntry] = useState({"dish": "", "ingredients": "", "calories": 0, fat: 0}) 
 
 
     // INITIAL LOAD UP
@@ -26,6 +26,7 @@ const Entries = () => {
     }
 
 
+    console.log(entries)
     return(
         <div>
             <Container>
@@ -34,7 +35,7 @@ const Entries = () => {
             <Container>
             {entries != null && entries.map((entry, i) => (
                 <Entry entryData={entry} deleteSingleEntry={deleteSingleEntry} setChangeIngredient={setChangeIngredient} setChangeEntry={setChangeEntry}/>
-            ))}
+                ))}
             </Container>
 
             <Modal show={addNewEntry} onHide={() => setAddNewEntry(false)} centered>
@@ -111,7 +112,12 @@ const Entries = () => {
     function changeSingleEntry(){
         changeEntry.change = false
         let URL = "http://localhost:8000/entry/update/" + changeEntry.id
-        axios.put(URL, newEntry)
+        axios.put(URL, {
+            "ingredients": newEntry.ingredients,
+            "dish": newEntry.dish,
+            "calories": newEntry.calories,
+            "fat": parseFloat(newEntry.fat)
+        })
         .then(response => {
             if(response.status === 200){
                 setRefreshData(true)
