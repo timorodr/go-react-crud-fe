@@ -98,7 +98,7 @@ const Entries = () => {
 
     function changeIngredientForEntry(){
         changeIngredient.change = false
-        let URL = "http://localhost:8000/ingredient/update/" + changeIngredient.id
+        let URL = "https://go-crud-be.onrender.com/ingredient/update/" + changeIngredient.id
         axios.put(URL, {
             "ingredients": newIngredientName
         }).then(response => {
@@ -111,7 +111,7 @@ const Entries = () => {
 
     function changeSingleEntry(){
         changeEntry.change = false
-        let URL = "http://localhost:8000/entry/update/" + changeEntry.id
+        let URL = "https://go-crud-be.onrender.com/entry/update/" + changeEntry.id
         axios.put(URL, {
             "ingredients": newEntry.ingredients,
             "dish": newEntry.dish,
@@ -130,7 +130,7 @@ const Entries = () => {
 
     function addSingleEntry(){
         setAddNewEntry(false)
-        let URL = "http://localhost:8000/entry/create"
+        let URL = "https://go-crud-be.onrender.com/entry/create"
         axios.post(URL, {
             "ingredients": newEntry.ingredients,
             "dish": newEntry.dish,
@@ -144,7 +144,7 @@ const Entries = () => {
     }
 
     function deleteSingleEntry(id){
-        let URL = "http://localhost:8000/entry/delete/" + id
+        let URL = "https://go-crud-be.onrender.com/entry/delete/" + id
         axios.delete(URL, {
 
         }).then(response => {
@@ -155,7 +155,7 @@ const Entries = () => {
     }
 
     function getAllEntries(){
-        let URL = "http://localhost:8000/entries"
+        let URL = "https://go-crud-be.onrender.com/entries"
         axios.get(URL, {
             responseType: 'json'
         }).then(response => {
